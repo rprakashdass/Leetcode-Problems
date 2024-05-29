@@ -1,0 +1,30 @@
+"""
+1886. Determine Whether Matrix Can Be Obtained By Rotation
+"""
+
+class Solution:
+    def findRotation(self, mat: List[List[int]], target: List[List[int]]) -> bool:
+        n = len(mat)
+        k = 0
+        while k < 4:
+            for i in range(n):
+                for j in range(i+1, n):
+                    if i != j:
+                        mat[i][j], mat[j][i] = mat[j][i], mat[i][j]
+
+            for i in range(n):
+                l, r = 0, n-1
+                while(l < r):
+                    mat[i][l], mat[i][r] = mat[i][r], mat[i][l]
+                    l += 1
+                    r -= 1
+            
+
+            if mat == target:
+                return True
+
+            k += 1
+        
+        return False
+            
+            
