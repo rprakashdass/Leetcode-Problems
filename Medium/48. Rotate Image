@@ -1,0 +1,25 @@
+class Solution:
+    def rotate(self, mat: List[List[int]]) -> None:
+        """
+        Sloved with In-Place. 
+        """
+        n = len(mat)
+        # Transpose
+        print(mat)
+        for i in range(n):
+            for j in range(i+1, n):
+                if i != j:
+                    mat[i][j], mat[j][i] = mat[j][i], mat[i][j]
+        print(mat)
+        # Reversal
+        # For matrix M*N Swap method results in error
+        for i in range(n):
+            l, r = 0, n-1
+            while(l < r):
+                mat[i][l], mat[i][r] = mat[i][r], mat[i][l]
+                l += 1
+                r -= 1
+
+        print(mat)
+        
+                
