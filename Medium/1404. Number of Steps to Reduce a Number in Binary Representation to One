@@ -1,0 +1,23 @@
+"""
+1404. Number of Steps to Reduce a Number in Binary Representation to One
+"""
+
+class Solution:
+    def numSteps(self, s: str) -> int:
+        def binary_to_decimal(binary):
+            power2, decimal = 1, 0
+            for bit in binary:
+                if bit == "1":
+                    decimal = decimal + power2
+                power2 *= 2
+            return decimal
+        num = binary_to_decimal(s[::-1])
+        print(num)
+        step = 0
+        while num > 1:
+            if num%2 == 0:
+                num = num// 2
+            else:
+                num += 1
+            step += 1
+        return step
