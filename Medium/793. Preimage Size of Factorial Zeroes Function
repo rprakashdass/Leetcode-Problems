@@ -1,0 +1,30 @@
+class Solution:
+    def preimageSizeFZF(self, k: int) -> int:
+        def zeros(n):
+            if n < 5:
+                return 0
+            count = 0
+            while n >= 5:
+                n //= 5
+                count += n
+
+            return count
+        
+        if k == 0:
+            return 5
+            
+        left, right, fact = 0, 10*k, 0
+        while left <= right:
+            mid = (left + right) // 2
+            z = zeros(mid)
+            if z == k:
+                fact = mid
+                break
+            elif z > k:
+                right = mid - 1
+            elif z < k:
+                left = mid + 1
+        if fact != 0:
+            return 5
+        else:
+            return 0
