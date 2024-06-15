@@ -1,0 +1,32 @@
+"""
+Given an m x n matrix, return all elements of the matrix in spiral order.
+"""
+
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        m = len(matrix)
+        n = len(matrix[0])
+        spiralmat, pointer = [], 0
+        rowTop, rowDown, colLeft, colRight = 0, m-1, 0, n-1
+
+        while(rowTop <= rowDown and colLeft <= colRight):
+            
+            if pointer == 0:
+                for col in range(colLeft, colRight+1):
+                    spiralmat.append(matrix[rowTop][col])
+                rowTop += 1
+            elif pointer == 1:
+                for row in range(rowTop, rowDown+1):
+                    spiralmat.append(matrix[row][colRight])
+                colRight -= 1
+            elif pointer == 2:
+                for col in range(colRight, colLeft-1, -1):
+                    spiralmat.append(matrix[rowDown][col])
+                rowDown -= 1
+            elif pointer == 3:
+                for row in range(rowDown, rowTop-1, -1):
+                    spiralmat.append(matrix[row][colLeft])
+                colLeft += 1
+            pointer = (pointer+ 1) % 4
+
+        return spiralmat
