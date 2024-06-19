@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool sumGame(string st) {
+        int n = st.size();
+        int lq = 0, rq = 0, ls = 0, rs = 0;
+
+        for (int i = 0; i < n/2; ++i) {
+            if (st[i] == '?') {
+                lq++;
+            } else {
+                ls += st[i] - '0';
+            }
+        }
+
+        for (int i = n/2; i < n; ++i) {
+            if (st[i] == '?') {
+                rq++;
+            } else {
+                rs += st[i] - '0';
+            }
+        }
+
+        int sd = ls - rs;
+        int qd = rq - lq;
+
+        int r = !(qd % 2 == 0 && qd / 2 * 9 == sd); 
+        cout << r;
+        return r;
+        }
+};
