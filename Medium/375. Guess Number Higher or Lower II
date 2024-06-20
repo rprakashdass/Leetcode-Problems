@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int get_amount(int start, int end, vector<vector <int>>&dp){
+        if(start >= end){
+            return 0;
+        }
+        if (dp[start][end] != -1){
+            return dp[start][end];
+        }
+        int value = INT_MAX;
+        for(int choosen = start;choosen <= end;choosen++){
+            value = min(value, max(choosen + get_amount(start, choosen-1, dp), choosen + get_amount(choosen+1, end, dp)));
+        }
+        return dp[start][end] = value;
+    }
+    int getMoneyAmount(int n) {
+        vector<vector<int>> dp (n+1, vector<int>(n+1, -1));
+        return get_amount(1, n, dp);
+    }
+};
