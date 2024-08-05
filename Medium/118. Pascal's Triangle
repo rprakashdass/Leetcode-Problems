@@ -1,0 +1,14 @@
+class Solution {
+public:
+    vector<vector<int>> generate(int n) {
+        vector<vector<int>> ar(n);
+        for (int i = 0; i < n; i++) {
+            ar[i].resize(i + 1);
+            ar[i][0] = ar[i][i] = 1;
+            for (int j = 1; j < i; j++) {
+                ar[i][j] = ar[i - 1][j - 1] + ar[i - 1][j];
+            }
+        }
+        return ar;
+    }
+};
