@@ -1,0 +1,32 @@
+// Brute
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int n = nums.size();
+        map<int, int> nmap;
+        for(int i = 0;i < n;i++){
+            nmap[nums[i]]++;
+        }
+        for(auto it: nmap){
+            if(it.second == 1){
+                return it.first;
+            }
+        }
+        return 0;
+    }
+};
+
+// Optimal
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int n = nums.size();
+        int xorr = 0;
+        for(int i = 0;i < n;i++){
+            xorr = xorr ^ nums[i];
+        }
+        return xorr;
+    }
+};
