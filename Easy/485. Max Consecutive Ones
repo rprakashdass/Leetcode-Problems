@@ -1,0 +1,23 @@
+// Brute Force
+
+class Solution {
+public:
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int n = nums.size();
+        int mc = 0, vc = 0;
+        for(int i = 0;i < n;i++){
+            if(nums[i]){
+                vc++;
+            } else{
+                if(vc > mc){
+                    mc = vc;
+                }
+                vc = 0;
+            }
+        }
+        return max(mc, vc);
+    }
+};
+
+// Optimized
+
