@@ -17,7 +17,7 @@ private:
 
 public:
     int change(int amount, vector<int>& coins) {
-        vector<vector<int>> memo(amount + 1, vector<int>(coins.size()+1, -1));
+        vector<vector<int>> memo(amount + 1, vector<int>(coins.size(), -1));
         return recur(coins, memo, amount, 0);
     }
 };
