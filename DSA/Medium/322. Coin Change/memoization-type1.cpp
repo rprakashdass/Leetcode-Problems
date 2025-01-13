@@ -1,3 +1,5 @@
+// Time complexity - O(n*amount)
+// Space complexity - O(n*amount)
 class Solution {
 private:
     int recur(vector<int>& coins, vector<int>& memo, int amount){
