@@ -1,0 +1,21 @@
+class Solution {
+public:
+    long long minCost(vector<int>& arr, vector<int>& brr, long long k) {
+        int n = arr.size();
+        long long operation1Cost = 0;
+        for(int i = 0;i < n;i++){
+            operation1Cost += abs(arr[i] - brr[i]);
+        }
+        vector<int> sArr = arr;
+        vector<int> sBrr = brr;
+
+        sort(sArr.begin(), sArr.end());
+        sort(sBrr.begin(), sBrr.end());        
+
+        long long operation2Cost = 0;
+        for(int i = 0;i < n;i++){
+            operation2Cost += abs(sArr[i] - sBrr[i]);
+        }
+        return min(operation1Cost, operation2Cost + k);
+    }
+};
