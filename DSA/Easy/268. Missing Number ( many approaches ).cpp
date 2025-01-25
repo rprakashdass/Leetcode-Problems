@@ -46,3 +46,18 @@ public:
         return ( xor_n ^ xor_ar );
     }
 };
+
+
+// manual sum
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int sum = 0, availableSum = 0;
+        for(int i = 0;i < nums.size();i++){
+            availableSum += nums[i];
+            sum += (i+1);
+        }
+        return sum - availableSum;
+    }
+};
