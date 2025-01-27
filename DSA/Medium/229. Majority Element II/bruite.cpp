@@ -6,9 +6,9 @@ public:
         unordered_map<int, int> mp;
         for(int num: nums){
             mp[num]++;
-        }
-        for(auto it: mp){
-            if(it.second > n/3) res.push_back(it.first); 
+            if(mp[num] == (n/3)+1){
+                res.push_back(num); 
+            }
         }
         return res;
     }
