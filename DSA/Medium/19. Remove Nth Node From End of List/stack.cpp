@@ -17,23 +17,13 @@ public:
             stq.push(temp);
             temp = temp->next;
         }
-        if(n == 1){
-            if(head == stq.top()) {
-                head = nullptr;
-            } else {
-                stq.pop();
-                stq.top()->next = nullptr;
-            }
-            return head;
-        }
         while(!stq.empty() && n--){
             nodeToDel = stq.top();
             stq.pop();
         }
-        if(nodeToDel->next){
-            nodeToDel->val = nodeToDel->next->val;
-            nodeToDel->next = nodeToDel->next->next;
-        }
+        if(stq.empty()) return head->next;
+        ListNode* prev = stq.top();
+        prev->next = nodeToDel->next;
         return head;
     }
 };
