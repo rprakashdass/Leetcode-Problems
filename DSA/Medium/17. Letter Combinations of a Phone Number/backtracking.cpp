@@ -1,7 +1,7 @@
 class Solution {
     inline static vector<string> keyboard = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
 
-void combinations(vector<string>& result, string digits, string combination, int i, int& n){
+void combinations(vector<string>& result, const string& digits, string combination, int i, int& n){
     if(i == n){
         result.push_back(combination);
         return;
