@@ -1,7 +1,10 @@
 class Solution {
 public:
+    int count = 0;
     void dfs(vector<vector<int>>& rooms, vector<bool> &visited, int src) {
+        if(visited[src]) return;
         visited[src] = true;
+        count++;
         for(int key: rooms[src]) {
             if(!visited[key]) {
                 dfs(rooms, visited, key);
@@ -9,12 +12,8 @@ public:
         }
     }
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
-        vector<vector<int>> adj;
         vector<bool> visited(rooms.size(), false);
         dfs(rooms, visited, 0);
-        for(int i = 0;i < rooms.size();i++) {
-            if(!visited[i]) return false;
-        }
-        return true;
+        return count == rooms.size();
     }
 };
